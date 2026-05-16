@@ -1,0 +1,574 @@
+# Instincts generated from https://github.com/salemaziel/SP-MCP
+# Generated: 2026-05-16T08:05:27.133Z
+# Version: 2.0
+# NOTE: This file supplements (does not replace) any existing curated instincts.
+# High-confidence manually curated instincts should be preserved alongside these.
+
+---
+id: SP-MCP-commit-conventional
+trigger: "when writing a commit message"
+confidence: 0.85
+domain: git
+source: repo-analysis
+source_repo: https://github.com/salemaziel/SP-MCP
+---
+
+# SP MCP Commit Conventional
+
+## Action
+
+Use conventional commit format with prefixes: feat, conductor, chore, fix, docs
+
+## Evidence
+
+- 26 commits analyzed
+- Detected conventional commit pattern
+- Examples: fix: Patch path traversal vulnerability, conductor(setup): Add conductor setup files and initial track
+
+---
+id: SP-MCP-commit-length
+trigger: "when writing a commit message"
+confidence: 0.6
+domain: git
+source: repo-analysis
+source_repo: https://github.com/salemaziel/SP-MCP
+---
+
+# SP MCP Commit Length
+
+## Action
+
+Write moderate-length commit messages (~62 characters)
+
+## Evidence
+
+- Average commit message length: 62 chars
+- Based on 26 commits
+
+---
+id: SP-MCP-naming-files
+trigger: "when creating a new file"
+confidence: 0.8
+domain: code-style
+source: repo-analysis
+source_repo: https://github.com/salemaziel/SP-MCP
+---
+
+# SP MCP Naming Files
+
+## Action
+
+Use camelCase naming convention
+
+## Evidence
+
+- Analyzed file naming patterns in repository
+- Dominant pattern: camelCase
+
+---
+id: SP-MCP-import-relative
+trigger: "when importing modules"
+confidence: 0.75
+domain: code-style
+source: repo-analysis
+source_repo: https://github.com/salemaziel/SP-MCP
+---
+
+# SP MCP Import Relative
+
+## Action
+
+Use relative imports for project files
+
+## Evidence
+
+- Import analysis shows relative import pattern
+- Example: import { x } from '../lib/x'
+
+---
+id: SP-MCP-export-style
+trigger: "when exporting from a module"
+confidence: 0.7
+domain: code-style
+source: repo-analysis
+source_repo: https://github.com/salemaziel/SP-MCP
+---
+
+# SP MCP Export Style
+
+## Action
+
+Prefer named exports
+
+## Evidence
+
+- Export pattern analysis
+- Dominant style: named
+
+---
+id: SP-MCP-test-separate
+trigger: "when writing tests"
+confidence: 0.8
+domain: testing
+source: repo-analysis
+source_repo: https://github.com/salemaziel/SP-MCP
+---
+
+# SP MCP Test Separate
+
+## Action
+
+Place tests in the tests/ or __tests__/ directory, mirroring src structure
+
+## Evidence
+
+- Separate test directory pattern detected
+- Tests live in dedicated test folders
+
+---
+id: SP-MCP-test-naming
+trigger: "when creating a test file"
+confidence: 0.85
+domain: testing
+source: repo-analysis
+source_repo: https://github.com/salemaziel/SP-MCP
+---
+
+# SP MCP Test Naming
+
+## Action
+
+Name test files using the pattern: *.test.ts
+
+## Evidence
+
+- File pattern: *.test.ts
+- Consistent across test files
+
+---
+id: SP-MCP-workflow-feature-development
+trigger: "when implementing a new feature"
+confidence: 0.9
+domain: workflow
+source: repo-analysis
+source_repo: https://github.com/salemaziel/SP-MCP
+---
+
+# SP MCP Workflow Feature Development
+
+## Action
+
+Follow the feature-development workflow:
+1. Add feature implementation
+2. Add tests for feature
+3. Update documentation
+
+## Evidence
+
+- Workflow detected from commit patterns
+- Frequency: ~21x per month
+- Files: **/*.test.*
+
+---
+id: SP-MCP-workflow-feature-implementation-with-tests
+trigger: "when doing feature implementation with tests"
+confidence: 0.65
+domain: workflow
+source: repo-analysis
+source_repo: https://github.com/salemaziel/SP-MCP
+---
+
+# SP MCP Workflow Feature Implementation With Tests
+
+## Action
+
+Follow the feature-implementation-with-tests workflow:
+1. Edit or create implementation files (e.g., mcp_server.py, plugin.js)
+2. Update or create test files (e.g., tests/run_tests.js, tests/test_mcp_server.py, tests/test_harness.js, tests/live_inspect.py)
+3. Optionally update plugin.zip if the feature affects the plugin bundle
+
+## Evidence
+
+- Workflow detected from commit patterns
+- Frequency: ~3x per month
+- Files: mcp_server.py, plugin.js, tests/run_tests.js
+
+---
+id: SP-MCP-workflow-conductor-task-or-phase-completion
+trigger: "when doing conductor task or phase completion"
+confidence: 0.7
+domain: workflow
+source: repo-analysis
+source_repo: https://github.com/salemaziel/SP-MCP
+---
+
+# SP MCP Workflow Conductor Task Or Phase Completion
+
+## Action
+
+Follow the conductor-task-or-phase-completion workflow:
+1. Edit conductor/tracks/<track>/plan.md to mark task or phase as complete
+
+## Evidence
+
+- Workflow detected from commit patterns
+- Frequency: ~4x per month
+- Files: conductor/tracks/*/plan.md
+
+---
+id: SP-MCP-workflow-conductor-track-archive
+trigger: "when doing conductor track archive"
+confidence: 0.6
+domain: workflow
+source: repo-analysis
+source_repo: https://github.com/salemaziel/SP-MCP
+---
+
+# SP MCP Workflow Conductor Track Archive
+
+## Action
+
+Follow the conductor-track-archive workflow:
+1. Move track files (index.md, metadata.json, plan.md, spec.md) to conductor/archive/<track>/
+2. Update conductor/tracks.md to reflect the archive
+
+## Evidence
+
+- Workflow detected from commit patterns
+- Frequency: ~2x per month
+- Files: conductor/archive/*/index.md, conductor/archive/*/metadata.json, conductor/archive/*/plan.md
+
+---
+id: SP-MCP-workflow-plugin-zip-rebuild
+trigger: "when doing plugin zip rebuild"
+confidence: 0.6
+domain: workflow
+source: repo-analysis
+source_repo: https://github.com/salemaziel/SP-MCP
+---
+
+# SP MCP Workflow Plugin Zip Rebuild
+
+## Action
+
+Follow the plugin-zip-rebuild workflow:
+1. Update code or configuration files (e.g., plugin.js, manifest.json, icon.svg)
+2. Rebuild or update plugin.zip
+
+## Evidence
+
+- Workflow detected from commit patterns
+- Frequency: ~2x per month
+- Files: plugin.zip, plugin.js, manifest.json
+
+---
+id: sp-mcp-instinct-file-naming-camelcase
+trigger: "When creating a new Python file"
+confidence: 0.8
+domain: code-style
+source: repo-analysis
+source_repo: salemaziel/SP-MCP
+---
+
+# Sp Mcp Instinct File Naming Camelcase
+
+## Action
+
+Name the file using camelCase (e.g., myModule.py)
+
+## Evidence
+
+- Pattern in namingConventions.files: camelCase
+
+---
+id: sp-mcp-instinct-function-naming-camelcase
+trigger: "When defining a new function in Python"
+confidence: 0.8
+domain: code-style
+source: repo-analysis
+source_repo: salemaziel/SP-MCP
+---
+
+# Sp Mcp Instinct Function Naming Camelcase
+
+## Action
+
+Name the function using camelCase (e.g., processInput)
+
+## Evidence
+
+- Pattern in namingConventions.functions: camelCase
+
+---
+id: sp-mcp-instinct-class-naming-pascalcase
+trigger: "When defining a new class in Python"
+confidence: 0.8
+domain: code-style
+source: repo-analysis
+source_repo: salemaziel/SP-MCP
+---
+
+# Sp Mcp Instinct Class Naming Pascalcase
+
+## Action
+
+Name the class using PascalCase (e.g., MyClass)
+
+## Evidence
+
+- Pattern in namingConventions.classes: PascalCase
+
+---
+id: sp-mcp-instinct-constant-naming-screaming-snake
+trigger: "When defining a constant in Python"
+confidence: 0.8
+domain: code-style
+source: repo-analysis
+source_repo: salemaziel/SP-MCP
+---
+
+# Sp Mcp Instinct Constant Naming Screaming Snake
+
+## Action
+
+Name the constant using SCREAMING_SNAKE_CASE (e.g., MAX_SIZE)
+
+## Evidence
+
+- Pattern in namingConventions.constants: SCREAMING_SNAKE_CASE
+
+---
+id: sp-mcp-instinct-import-style-relative
+trigger: "When importing modules in Python"
+confidence: 0.8
+domain: code-style
+source: repo-analysis
+source_repo: salemaziel/SP-MCP
+---
+
+# Sp Mcp Instinct Import Style Relative
+
+## Action
+
+Use relative imports
+
+## Evidence
+
+- Pattern in importStyle: relative
+
+---
+id: sp-mcp-instinct-export-style-named
+trigger: "When exporting functions or classes in Python"
+confidence: 0.7
+domain: code-style
+source: repo-analysis
+source_repo: salemaziel/SP-MCP
+---
+
+# Sp Mcp Instinct Export Style Named
+
+## Action
+
+Use named exports
+
+## Evidence
+
+- Pattern in exportStyle: named
+
+---
+id: sp-mcp-instinct-test-file-pattern
+trigger: "When creating a new test file"
+confidence: 0.7
+domain: testing
+source: repo-analysis
+source_repo: salemaziel/SP-MCP
+---
+
+# Sp Mcp Instinct Test File Pattern
+
+## Action
+
+Name the test file using the pattern *.test.ts
+
+## Evidence
+
+- Pattern in testing.filePattern: *.test.ts
+
+---
+id: sp-mcp-instinct-unit-tests
+trigger: "When writing tests"
+confidence: 0.8
+domain: testing
+source: repo-analysis
+source_repo: salemaziel/SP-MCP
+---
+
+# Sp Mcp Instinct Unit Tests
+
+## Action
+
+Write unit tests
+
+## Evidence
+
+- Pattern in testing.testTypes: unit
+
+---
+id: sp-mcp-instinct-test-location-separate
+trigger: "When adding test files"
+confidence: 0.8
+domain: testing
+source: repo-analysis
+source_repo: salemaziel/SP-MCP
+---
+
+# Sp Mcp Instinct Test Location Separate
+
+## Action
+
+Place test files in a separate 'tests' folder
+
+## Evidence
+
+- Pattern in architecture.folderStructure.testLocation: separate
+- Common folder: tests
+
+---
+id: sp-mcp-instinct-try-catch-error-handling
+trigger: "When handling errors in code"
+confidence: 0.8
+domain: code-style
+source: repo-analysis
+source_repo: salemaziel/SP-MCP
+---
+
+# Sp Mcp Instinct Try Catch Error Handling
+
+## Action
+
+Use try-catch blocks for error handling
+
+## Evidence
+
+- Pattern in errorHandling.style: try-catch
+
+---
+id: sp-mcp-instinct-commit-conventional-format
+trigger: "When writing a git commit message"
+confidence: 0.9
+domain: git
+source: repo-analysis
+source_repo: salemaziel/SP-MCP
+---
+
+# Sp Mcp Instinct Commit Conventional Format
+
+## Action
+
+Use conventional commit format with prefixes (feat, fix, chore, docs, conductor)
+
+## Evidence
+
+- Seen in commit: 'fix: Patch path traversal vulnerability'
+- Seen in commit: 'feat(tags): Implement delete_tag'
+- Pattern in commits.prefixes
+
+---
+id: sp-mcp-instinct-commit-length
+trigger: "When writing a git commit message"
+confidence: 0.7
+domain: git
+source: repo-analysis
+source_repo: salemaziel/SP-MCP
+---
+
+# Sp Mcp Instinct Commit Length
+
+## Action
+
+Keep commit messages concise, around 60 characters
+
+## Evidence
+
+- Pattern in commits.averageLength: 62
+
+---
+id: sp-mcp-instinct-feature-implementation-with-tests
+trigger: "When someone wants to add a new feature or endpoint to the system"
+confidence: 0.95
+domain: workflow
+source: repo-analysis
+source_repo: salemaziel/SP-MCP
+---
+
+# Sp Mcp Instinct Feature Implementation With Tests
+
+## Action
+
+Edit or create implementation files, then update or create corresponding test files, and optionally update plugin.zip if affected
+
+## Evidence
+
+- Workflow: feature-implementation-with-tests
+- Example commits and files in workflow
+
+---
+id: sp-mcp-instinct-conductor-task-completion
+trigger: "When someone completes a planned task or phase in a development track"
+confidence: 0.95
+domain: workflow
+source: repo-analysis
+source_repo: salemaziel/SP-MCP
+---
+
+# Sp Mcp Instinct Conductor Task Completion
+
+## Action
+
+Edit conductor/tracks/<track>/plan.md to mark the task or phase as complete
+
+## Evidence
+
+- Workflow: conductor-task-or-phase-completion
+- Example commits and files in workflow
+
+---
+id: sp-mcp-instinct-conductor-track-archive
+trigger: "When someone finishes a development track and wants to archive it"
+confidence: 0.9
+domain: workflow
+source: repo-analysis
+source_repo: salemaziel/SP-MCP
+---
+
+# Sp Mcp Instinct Conductor Track Archive
+
+## Action
+
+Move track files to conductor/archive/<track>/ and update conductor/tracks.md
+
+## Evidence
+
+- Workflow: conductor-track-archive
+- Example commits and files in workflow
+
+---
+id: sp-mcp-instinct-plugin-zip-rebuild
+trigger: "When someone updates implementation or configuration and needs to rebuild the deployable plugin bundle"
+confidence: 0.9
+domain: workflow
+source: repo-analysis
+source_repo: salemaziel/SP-MCP
+---
+
+# Sp Mcp Instinct Plugin Zip Rebuild
+
+## Action
+
+Update code or configuration files and rebuild plugin.zip
+
+## Evidence
+
+- Workflow: plugin-zip-rebuild
+- Example commits and files in workflow
+
