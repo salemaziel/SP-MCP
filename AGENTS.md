@@ -34,7 +34,7 @@ Sync failures usually happen because:
 
 ### Updating the Plugin
 If you modify `plugin.js`:
-1.  **Version Bump:** Update the `VERSION` constant.
+1.  **Version Bump:** Update the `PLUGIN_VERSION` constant.
 2.  **Deploy:** You MUST copy the content of `plugin.js` and paste it into Super Productivity's Settings -> Importer/Exporter -> Plugin (or Advanced -> Plugin).
 3.  **Verify:** Run `debug_bridge.py` to confirm the new version is active.
 

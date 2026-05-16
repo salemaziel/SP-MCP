@@ -46,6 +46,9 @@ class SuperProductivityMCPServer:
 
     def setup_logging(self):
         log_file = self.base_dir / "mcp_server.log"
+        root_logger = logging.getLogger()
+        if root_logger.handlers:
+            return
         logging.basicConfig(
             level=logging.INFO,
             format="%(asctime)s - %(levelname)s - %(message)s",
@@ -83,49 +86,6 @@ class SuperProductivityMCPServer:
                             },
                         },
                         "required": ["title"],
-                    },
-                ),
-                types.Tool(
-                    name="update_project",
-                    description="Update an existing project (e.g., change title, color, or archive it)",
-                    inputSchema={
-                        "type": "object",
-                        "properties": {
-                            "project_id": {"type": "string", "description": "Project ID to update"},
-                            "title": {"type": "string", "description": "New project title"},
-                            "description": {"type": "string", "description": "New project description"},
-                            "color": {"type": "string", "description": "New project color (hex code)"},
-                            "is_archived": {"type": "boolean", "description": "Archive the project (acts like deletion)"}
-                        },
-                        "required": ["project_id"],
-                    },
-                ),
-                types.Tool(
-                    name="get_current_context_tasks",
-                    description="Get tasks for the currently focused view/context in Super Productivity",
-                    inputSchema={"type": "object", "properties": {}},
-                ),
-                types.Tool(
-                    name="reorder_tasks",
-                    description="Reorder tasks manually within a specific context",
-                    inputSchema={
-                        "type": "object",
-                        "properties": {
-                            "task_ids": {
-                                "type": "array",
-                                "items": {"type": "string"},
-                                "description": "List of task IDs in the new desired order"
-                            },
-                            "context_id": {
-                                "type": "string",
-                                "description": "ID of the context (e.g. project ID, tag ID, or 'TODAY')"
-                            },
-                            "context_type": {
-                                "type": "string",
-                                "description": "Type of context ('PROJECT', 'TAG', 'TODAY')"
-                            }
-                        },
-                        "required": ["task_ids", "context_id", "context_type"],
                     },
                 ),
                 types.Tool(
@@ -280,49 +240,6 @@ class SuperProductivityMCPServer:
                             },
                         },
                         "required": ["title"],
-                    },
-                ),
-                types.Tool(
-                    name="update_project",
-                    description="Update an existing project (e.g., change title, color, or archive it)",
-                    inputSchema={
-                        "type": "object",
-                        "properties": {
-                            "project_id": {"type": "string", "description": "Project ID to update"},
-                            "title": {"type": "string", "description": "New project title"},
-                            "description": {"type": "string", "description": "New project description"},
-                            "color": {"type": "string", "description": "New project color (hex code)"},
-                            "is_archived": {"type": "boolean", "description": "Archive the project (acts like deletion)"}
-                        },
-                        "required": ["project_id"],
-                    },
-                ),
-                types.Tool(
-                    name="get_current_context_tasks",
-                    description="Get tasks for the currently focused view/context in Super Productivity",
-                    inputSchema={"type": "object", "properties": {}},
-                ),
-                types.Tool(
-                    name="reorder_tasks",
-                    description="Reorder tasks manually within a specific context",
-                    inputSchema={
-                        "type": "object",
-                        "properties": {
-                            "task_ids": {
-                                "type": "array",
-                                "items": {"type": "string"},
-                                "description": "List of task IDs in the new desired order"
-                            },
-                            "context_id": {
-                                "type": "string",
-                                "description": "ID of the context (e.g. project ID, tag ID, or 'TODAY')"
-                            },
-                            "context_type": {
-                                "type": "string",
-                                "description": "Type of context ('PROJECT', 'TAG', 'TODAY')"
-                            }
-                        },
-                        "required": ["task_ids", "context_id", "context_type"],
                     },
                 ),
                 types.Tool(
